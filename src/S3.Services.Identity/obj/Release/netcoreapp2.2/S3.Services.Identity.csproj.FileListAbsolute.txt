@@ -1,0 +1,17 @@
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Services.Identity.deps.json
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Services.Identity.runtimeconfig.json
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Services.Identity.runtimeconfig.dev.json
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Services.Identity.dll
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Services.Identity.pdb
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Common.dll
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Release\netcoreapp2.2\S3.Common.pdb
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.csprojAssemblyReference.cache
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.csproj.CoreCompileInputs.cache
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.RazorAssemblyInfo.cache
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.RazorAssemblyInfo.cs
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.AssemblyInfoInputs.cache
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.AssemblyInfo.cs
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.RazorTargetAssemblyInfo.cache
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.csproj.CopyComplete
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.dll
+C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Release\netcoreapp2.2\S3.Services.Identity.pdb
