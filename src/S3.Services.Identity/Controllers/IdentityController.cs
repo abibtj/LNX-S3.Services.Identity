@@ -9,7 +9,7 @@ using S3.Services.Identity.Users.Commands;
 
 namespace S3.Services.Identity.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class IdentityController : BaseController
     {

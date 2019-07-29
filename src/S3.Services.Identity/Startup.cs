@@ -21,6 +21,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace S3.Services.Identity
 {
@@ -30,10 +31,22 @@ namespace S3.Services.Identity
         public IConfiguration Configuration { get; }
         public IContainer Container { get; private set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.docker.json", optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
+
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
@@ -41,7 +54,7 @@ namespace S3.Services.Identity
             services.AddSwaggerDocs();
             services.AddConsul();
             services.AddJwt();
-            services.AddJaeger();
+            //services.AddJaeger();
             services.AddOpenTracing();
             services.AddRedis();
             services.AddInitializers(typeof(IMongoDbInitializer));
@@ -54,6 +67,7 @@ namespace S3.Services.Identity
                             .AllowCredentials()
                             .WithExposedHeaders(Headers));
             });
+           
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
@@ -65,7 +79,6 @@ namespace S3.Services.Identity
             builder.AddRabbitMq();
             builder.AddDispatchers();
             builder.RegisterType<PasswordHasher<User>>().As<IPasswordHasher<User>>();
-
             Container = builder.Build();
 
             return new AutofacServiceProvider(Container);

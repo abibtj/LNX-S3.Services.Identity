@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
+using S3.Common;
 using S3.Common.Types;
 
 
@@ -30,12 +31,12 @@ namespace S3.Services.Identity.Domain
         {
             if (!EmailRegex.IsMatch(email))
             {
-                throw new S3Exception(Codes.InvalidEmail,
+                throw new S3Exception(ExceptionCodes.InvalidEmail,
                     $"Invalid email: '{email}'.");
             }
             if (!Domain.Role.IsValid(role))
             {
-                throw new S3Exception(Codes.InvalidRole,
+                throw new S3Exception(ExceptionCodes.InvalidRole,
                     $"Invalid role: '{role}'.");
             }
 
@@ -49,15 +50,57 @@ namespace S3.Services.Identity.Domain
 
         public void SetPassword(string password, IPasswordHasher<User> passwordHasher)
         {
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                throw new S3Exception(Codes.InvalidPassword,
-                    "Password can not be empty.");
-            }
+            ValidatePassword(password);
             PasswordHash = passwordHasher.HashPassword(this, password);
         }
 
-        public bool ValidatePassword(string password, IPasswordHasher<User> passwordHasher)
+        public bool VerifyHashedPassword(string password, IPasswordHasher<User> passwordHasher)
             => passwordHasher.VerifyHashedPassword(this, PasswordHash, password) != PasswordVerificationResult.Failed;
+
+        private bool ValidatePassword(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                    "Password can not be empty.");
+            }
+
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMiniMaxChars = new Regex(@".{6,20}");
+            var hasLowerChar = new Regex(@"[a-z]+");
+            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
+            if (!hasLowerChar.IsMatch(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                     "Password must contain at least one lower case letter.");
+            }
+            else if (!hasUpperChar.IsMatch(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                    "Password must contain at least one upper case letter.");
+            }
+            else if (!hasMiniMaxChars.IsMatch(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                    "Password must be between 6 and 20 characters long.");
+            }
+            else if (!hasNumber.IsMatch(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                     "Password must contain at least one digit [0 - 9].");
+            }
+
+            else if (!hasSymbols.IsMatch(password))
+            {
+                throw new S3Exception(ExceptionCodes.InvalidPassword,
+                    "Password must contain at least one symbol.");
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

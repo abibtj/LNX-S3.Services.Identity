@@ -7,6 +7,7 @@ using S3.Services.Identity.Domain;
 using S3.Services.Identity.Users.Events;
 using S3.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
+using S3.Common;
 
 namespace S3.Services.Identity.Services
 {
@@ -39,7 +40,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
             {
-                throw new S3Exception(Codes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.UserNotFound, 
                     $"User: '{userId}' was not found.");
             }
             await _refreshTokenRepository.AddAsync(new RefreshToken(user, _passwordHasher));
@@ -50,18 +51,18 @@ namespace S3.Services.Identity.Services
             var refreshToken = await _refreshTokenRepository.GetAsync(token);
             if (refreshToken == null)
             {
-                throw new S3Exception(Codes.RefreshTokenNotFound, 
+                throw new S3Exception(ExceptionCodes.RefreshTokenNotFound, 
                     "Refresh token was not found.");
             }
             if (refreshToken.Revoked)
             {
-                throw new S3Exception(Codes.RefreshTokenAlreadyRevoked, 
+                throw new S3Exception(ExceptionCodes.RefreshTokenAlreadyRevoked, 
                     $"Refresh token: '{refreshToken.Id}' was revoked.");
             }
             var user = await _userRepository.GetAsync(refreshToken.UserId);
             if (user == null)
             {
-                throw new S3Exception(Codes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.UserNotFound, 
                     $"User: '{refreshToken.UserId}' was not found.");
             }
             var claims = await _claimsProvider.GetAsync(user.Id);
@@ -77,7 +78,7 @@ namespace S3.Services.Identity.Services
             var refreshToken = await _refreshTokenRepository.GetAsync(token);
             if (refreshToken == null || refreshToken.UserId != userId)
             {
-                throw new S3Exception(Codes.RefreshTokenNotFound, 
+                throw new S3Exception(ExceptionCodes.RefreshTokenNotFound, 
                     "Refresh token was not found.");
             }
             refreshToken.Revoke();

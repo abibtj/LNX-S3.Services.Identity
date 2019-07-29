@@ -1,6 +1,7 @@
 using System;
 using S3.Common.Types;
 using Microsoft.AspNetCore.Identity;
+using S3.Common;
 
 namespace S3.Services.Identity.Domain
 {
@@ -29,7 +30,7 @@ namespace S3.Services.Identity.Domain
         {
             if (Revoked)
             {
-                throw new S3Exception(Codes.RefreshTokenAlreadyRevoked, 
+                throw new S3Exception(ExceptionCodes.RefreshTokenAlreadyRevoked, 
                     $"Refresh token: '{Id}' was already revoked at '{RevokedAt}'.");
             }
             RevokedAt = DateTime.UtcNow;

@@ -11,9 +11,9 @@ namespace S3.Services.Identity.Users.Commands
         public string Role { get; }
 
         [JsonConstructor]
-        public SignUpCommand(Guid id, string email, string password, string role)
+        public SignUpCommand(string email, string password, string role)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Email = email;
             Password = password;
             Role = role;

@@ -7,7 +7,7 @@ using S3.Services.Identity.Users.Events;
 using S3.Services.Identity.Domain;
 using S3.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+using S3.Common;
 
 namespace S3.Services.Identity.Services
 {
@@ -40,7 +40,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(email);
             if (user != null)
             {
-                throw new S3Exception(Codes.EmailInUse,
+                throw new S3Exception(ExceptionCodes.EmailInUse,
                     $"Email: '{email}' is already in use.");
             }
             if (string.IsNullOrWhiteSpace(role))
@@ -56,9 +56,9 @@ namespace S3.Services.Identity.Services
         public async Task<JsonWebToken> SignInAsync(string email, string password)
         {
             var user = await _userRepository.GetAsync(email);
-            if (user == null || !user.ValidatePassword(password, _passwordHasher))
+            if (user == null || !user.VerifyHashedPassword(password, _passwordHasher))
             {
-                throw new S3Exception(Codes.InvalidCredentials,
+                throw new S3Exception(ExceptionCodes.InvalidCredentials,
                     "Invalid credentials.");
             }
             var refreshToken = new RefreshToken(user, _passwordHasher);
@@ -73,14 +73,14 @@ namespace S3.Services.Identity.Services
         public async Task ChangePasswordAsync(Guid userId, string currentPassword, string newPassword)
         {
             var user = await _userRepository.GetAsync(userId);
-            if (user == null)
+            if (user is null)
             {
-                throw new S3Exception(Codes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.UserNotFound, 
                     $"User with id: '{userId}' was not found.");
             }
-            if (!user.ValidatePassword(currentPassword, _passwordHasher))
+            if (!user.VerifyHashedPassword(currentPassword, _passwordHasher))
             {
-                throw new S3Exception(Codes.InvalidCurrentPassword, 
+                throw new S3Exception(ExceptionCodes.InvalidCurrentPassword, 
                     "Invalid current password.");
             }
             user.SetPassword(newPassword, _passwordHasher);
