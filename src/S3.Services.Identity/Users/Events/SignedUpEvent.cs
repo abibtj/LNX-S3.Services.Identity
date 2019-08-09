@@ -7,14 +7,14 @@ namespace S3.Services.Identity.Users.Events
     public class SignedUpEvent : IEvent
     {
         public Guid UserId { get; }
-        public string Email { get; }
+        public string Username { get; }
         public string Role { get; }
 
         [JsonConstructor]
-        public SignedUpEvent(Guid userId, string email, string role)
+        public SignedUpEvent(Guid userId, string username, string role)
         {
             UserId = userId;
-            Email = email;
+            Username = username;
             Role = role;
         }
     }

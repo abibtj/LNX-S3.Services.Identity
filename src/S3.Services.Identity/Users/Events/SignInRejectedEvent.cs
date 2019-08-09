@@ -6,14 +6,14 @@ namespace S3.Services.Identity.Users.Events
 {
     public class SignInRejectedEvent : IRejectedEvent
     {
-        public string Email { get; }
+        public string Username { get; }
         public string Reason { get; }
         public string Code { get; }
 
         [JsonConstructor]
-        public SignInRejectedEvent(string email, string reason, string code)
+        public SignInRejectedEvent(string username, string reason, string code)
         {
-            Email = email;
+            Username = username;
             Reason = reason;
             Code = code;
         }

@@ -15,8 +15,8 @@ namespace S3.Services.Identity.Domain
             RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public Guid Id { get; private set; }
-        public string Email { get; private set; }
-        //public string Username { get; private set; }
+        //public string Email { get; private set; }
+        public string Username { get; private set; }
         public string Role { get; private set; }
         public string PasswordHash { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -27,13 +27,13 @@ namespace S3.Services.Identity.Domain
 
         }
 
-        public User(Guid id, string email, string role)
+        public User(Guid id, string username, string role)
         {
-            if (!EmailRegex.IsMatch(email))
-            {
-                throw new S3Exception(ExceptionCodes.InvalidEmail,
-                    $"Invalid email: '{email}'.");
-            }
+            //if (!EmailRegex.IsMatch(username))
+            //{
+            //    throw new S3Exception(ExceptionCodes.InvalidEmail,
+            //        $"Invalid email: '{username}'.");
+            //}
             if (!Domain.Role.IsValid(role))
             {
                 throw new S3Exception(ExceptionCodes.InvalidRole,
@@ -41,8 +41,7 @@ namespace S3.Services.Identity.Domain
             }
 
             Id = id;
-            Email = email.ToLowerInvariant();
-            //Username = username;
+            Username = username;
             Role = role.ToLowerInvariant();
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;

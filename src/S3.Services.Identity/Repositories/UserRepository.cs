@@ -19,8 +19,8 @@ namespace S3.Services.Identity.Repositories
         public async Task<User> GetAsync(Guid id)
             => await _repository.GetAsync(id);
 
-        public async Task<User> GetAsync(string email)
-            => await _repository.GetAsync(x => x.Email == email.ToLowerInvariant());
+        public async Task<User> GetAsync(string username)
+            => await _repository.GetAsync(x => x.Username == username);
 
         public async Task AddAsync(User user)
             => await _repository.AddAsync(user);

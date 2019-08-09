@@ -35,27 +35,27 @@ namespace S3.Services.Identity.Services
             _busPublisher = busPublisher;
         }
 
-        public async Task SignUpAsync(Guid id, string email, string password, string role = Role.User)
+        public async Task SignUpAsync(Guid id, string username, string password, string role = Role.Teacher)
         {
-            var user = await _userRepository.GetAsync(email);
+            var user = await _userRepository.GetAsync(username);
             if (user != null)
             {
-                throw new S3Exception(ExceptionCodes.EmailInUse,
-                    $"Email: '{email}' is already in use.");
+                throw new S3Exception(ExceptionCodes.UsernameInUse,
+                    $"Username: '{username}' is already in use.");
             }
             if (string.IsNullOrWhiteSpace(role))
             {
-                role = Role.User;
+                role = Role.Teacher;
             }
-            user = new User(id, email, role);
+            user = new User(id, username, role);
             user.SetPassword(password, _passwordHasher);
             await _userRepository.AddAsync(user);
-            await _busPublisher.PublishAsync(new SignedUpEvent(id, email, role), CorrelationContext.Empty);
+            await _busPublisher.PublishAsync(new SignedUpEvent(id, username, role), CorrelationContext.Empty);
         }
 
-        public async Task<JsonWebToken> SignInAsync(string email, string password)
+        public async Task<JsonWebToken> SignInAsync(string username, string password)
         {
-            var user = await _userRepository.GetAsync(email);
+            var user = await _userRepository.GetAsync(username);
             if (user == null || !user.VerifyHashedPassword(password, _passwordHasher))
             {
                 throw new S3Exception(ExceptionCodes.InvalidCredentials,

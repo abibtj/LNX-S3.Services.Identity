@@ -1,17 +1,20 @@
 using S3.Common.Messages;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace S3.Services.Identity.Users.Commands
 {
     public class SignInCommand : ICommand
     {
-        public string Email { get; }
+        [Required(ErrorMessage ="Username is required.")]
+        public string Username { get; }
+        [Required(ErrorMessage ="Username is required.")]
         public string Password { get; }
 
         [JsonConstructor]
-        public SignInCommand(string email, string password)
+        public SignInCommand(string username, string password)
         {
-            Email = email;
+            Username = username;
             Password = password;
         }
     }

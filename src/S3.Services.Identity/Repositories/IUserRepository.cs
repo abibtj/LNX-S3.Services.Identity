@@ -9,7 +9,7 @@ namespace S3.Services.Identity.Repositories
     public interface IUserRepository
     {
         Task<User> GetAsync(Guid id);
-        Task<User> GetAsync(string email);
+        Task<User> GetAsync(string username);
         Task AddAsync(User user);
         Task UpdateAsync(User user);
     }

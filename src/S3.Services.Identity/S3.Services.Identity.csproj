@@ -5,6 +5,13 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>623028a8-0c33-45b7-963a-690db1986d0b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+
+    <!--Use the preview version of C# with nullable reference type-->
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <!--<Nullable>enable</Nullable>-->
+    <NoWarn>CS8618</NoWarn>
+    <!--#pragma warning disable CS8618 // Non-nullable field is uninitialized.-->
   </PropertyGroup>
 
 
