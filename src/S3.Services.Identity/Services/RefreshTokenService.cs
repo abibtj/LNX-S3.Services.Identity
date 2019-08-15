@@ -40,7 +40,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
             {
-                throw new S3Exception(ExceptionCodes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.NotFound, 
                     $"User: '{userId}' was not found.");
             }
             await _refreshTokenRepository.AddAsync(new RefreshToken(user, _passwordHasher));
@@ -62,7 +62,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(refreshToken.UserId);
             if (user == null)
             {
-                throw new S3Exception(ExceptionCodes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.NotFound, 
                     $"User: '{refreshToken.UserId}' was not found.");
             }
             var claims = await _claimsProvider.GetAsync(user.Id);

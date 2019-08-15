@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\Abeeb\\Documents\\Visual Studio 2019\\Projects\\S3\\LNX-S3.Common\\src\\S3.Common\\S3.Common.csproj": {
-      "version": "2.0.5",
+      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\Abeeb\\Documents\\Visual Studio 2019\\Projects\\S3\\LNX-S3.Common\\src\\S3.Common\\S3.Common.csproj",
         "projectName": "S3.Common_",
@@ -122,6 +122,10 @@
             "App.Metrics.Reporting.InfluxDB": {
               "target": "Package",
               "version": "[3.1.0, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[8.1.1, )"
             },
             "Autofac": {
               "target": "Package",
@@ -351,12 +355,7 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
           "warn": true
@@ -432,12 +431,7 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
           "warn": true

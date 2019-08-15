@@ -75,7 +75,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(userId);
             if (user is null)
             {
-                throw new S3Exception(ExceptionCodes.UserNotFound, 
+                throw new S3Exception(ExceptionCodes.NotFound, 
                     $"User with id: '{userId}' was not found.");
             }
             if (!user.VerifyHashedPassword(currentPassword, _passwordHasher))
