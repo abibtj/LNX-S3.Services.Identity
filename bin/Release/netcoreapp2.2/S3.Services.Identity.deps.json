@@ -29,7 +29,7 @@
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.7.9",
           "OpenTracing.Contrib.NetCore": "0.6.0",
-          "S3.Common_": "2.0.5"
+          "S3.Common_": "1.0.0"
         },
         "runtime": {
           "S3.Services.Identity.dll": {}
@@ -627,6 +627,21 @@
         },
         "compile": {
           "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "AutoMapper/8.1.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {
+            "assemblyVersion": "8.1.1.0",
+            "fileVersion": "8.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
       "Consul/0.7.2.6": {
@@ -2058,7 +2073,7 @@
           "lib/netstandard2.0/VaultSharp.dll": {}
         }
       },
-      "S3.Common_/2.0.5": {
+      "S3.Common_/1.0.0": {
         "dependencies": {
           "App.Metrics.AspNetCore": "3.1.0",
           "App.Metrics.AspNetCore.Core": "3.1.0",
@@ -2080,6 +2095,7 @@
           "App.Metrics.Reporting.Console": "3.1.0",
           "App.Metrics.Reporting.Http": "3.1.0",
           "App.Metrics.Reporting.InfluxDB": "3.1.0",
+          "AutoMapper": "8.1.1",
           "Autofac": "4.9.2",
           "Autofac.Extensions.DependencyInjection": "4.4.0",
           "Consul": "0.7.2.6",
@@ -5293,6 +5309,13 @@
       "path": "autofac.extensions.dependencyinjection/4.4.0",
       "hashPath": "autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512"
     },
+    "AutoMapper/8.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GKBliBukkLG0z/U0T4Jy+yEpr5bKDImQ9nEy/T8jqNulwNkWDjiEWa9TL4yCxIhleDbmVmw2xYSaJ3Eb2OcSUg==",
+      "path": "automapper/8.1.1",
+      "hashPath": "automapper.8.1.1.nupkg.sha512"
+    },
     "Consul/0.7.2.6": {
       "type": "package",
       "serviceable": true,
@@ -5993,7 +6016,7 @@
       "path": "vaultsharp/0.11.1002",
       "hashPath": "vaultsharp.0.11.1002.nupkg.sha512"
     },
-    "S3.Common_/2.0.5": {
+    "S3.Common_/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
