@@ -10,8 +10,14 @@
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
     <!--<Nullable>enable</Nullable>-->
-    <NoWarn>CS8618</NoWarn>
-    <!--#pragma warning disable CS8618 // Non-nullable field is uninitialized.-->
+    <NoWarn>CS0168,CS4014,CS8601,CS8603,CS8604,CS8618,CS8632</NoWarn>
+    <!--warning CS0168: The variable 'e' is declared but never used.-->
+    <!--warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.-->
+    <!--warning CS8601: Possible null reference assignment.-->
+    <!--warning CS8603: Possible null reference return.-->
+    <!--warning CS8604: Possible null reference argument for parameter.-->
+    <!--warning CS8618: Non-nullable field is uninitialized.-->
+    <!--warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.-->
   </PropertyGroup>
 
 

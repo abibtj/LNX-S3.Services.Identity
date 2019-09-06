@@ -61,7 +61,7 @@ namespace S3.Services.Identity.Domain
             if (string.IsNullOrWhiteSpace(password))
             {
                 throw new S3Exception(ExceptionCodes.InvalidPassword,
-                    "Password can not be empty.");
+                    "Password cannot be empty.");
             }
 
             var hasNumber = new Regex(@"[0-9]+");

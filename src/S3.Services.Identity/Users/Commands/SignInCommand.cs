@@ -8,7 +8,7 @@ namespace S3.Services.Identity.Users.Commands
     {
         [Required(ErrorMessage ="Username is required.")]
         public string Username { get; }
-        [Required(ErrorMessage ="Username is required.")]
+        [Required(ErrorMessage ="Password is required.")]
         public string Password { get; }
 
         [JsonConstructor]
