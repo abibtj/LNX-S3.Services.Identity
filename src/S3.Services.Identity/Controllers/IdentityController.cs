@@ -34,7 +34,7 @@ namespace S3.Services.Identity.Controllers
         public async Task<IActionResult> SignUp(SignUpCommand command)
         {
             command.BindId(c => c.Id);
-            await _identityService.SignUpAsync(command.Id, 
+            await _identityService.SignUpAsync(command.Id, command.SchoolId, 
                 command.Username, command.Password, command.Role);
 
             return NoContent();
@@ -54,7 +54,7 @@ namespace S3.Services.Identity.Controllers
                       $"You are not authorised to create a user with Role: {command.Role}.");
 
             command.BindId(c => c.Id);
-            await _identityService.SignUpAsync(command.Id,
+            await _identityService.SignUpAsync(command.Id, command.SchoolId,
                 command.Username, command.Password, command.Role);
 
             return NoContent();

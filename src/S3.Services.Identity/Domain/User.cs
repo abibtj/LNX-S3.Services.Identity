@@ -15,6 +15,7 @@ namespace S3.Services.Identity.Domain
             RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public Guid Id { get; private set; }
+        public Guid SchoolId { get; private set; }
         //public string Email { get; private set; }
         public string Username { get; private set; }
         public string Role { get; private set; }
@@ -27,7 +28,7 @@ namespace S3.Services.Identity.Domain
 
         }
 
-        public User(Guid id, string username, string role)
+        public User(Guid id, Guid schoolId, string username, string role)
         {
             //if (!EmailRegex.IsMatch(username))
             //{
@@ -41,6 +42,7 @@ namespace S3.Services.Identity.Domain
             }
 
             Id = id;
+            SchoolId = schoolId;
             Username = username;
             Role = role.ToLowerInvariant();
             CreatedAt = DateTime.UtcNow;

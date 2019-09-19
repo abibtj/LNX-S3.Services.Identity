@@ -35,7 +35,7 @@ namespace S3.Services.Identity.Services
             _busPublisher = busPublisher;
         }
 
-        public async Task SignUpAsync(Guid id, string username, string password, string role = Role.Teacher)
+        public async Task SignUpAsync(Guid id, Guid schoolId, string username, string password, string role)
         {
             var user = await _userRepository.GetAsync(username);
             if (user != null)
@@ -43,11 +43,11 @@ namespace S3.Services.Identity.Services
                 throw new S3Exception(ExceptionCodes.UsernameInUse,
                     $"Username: '{username}' is already in use.");
             }
-            if (string.IsNullOrWhiteSpace(role))
-            {
-                role = Role.Teacher;
-            }
-            user = new User(id, username, role);
+            //if (string.IsNullOrWhiteSpace(role))
+            //{
+            //    role = Role.Teacher;
+            //}
+            user = new User(id, schoolId, username, role);
             user.SetPassword(password, _passwordHasher);
             await _userRepository.AddAsync(user);
             await _busPublisher.PublishAsync(new SignedUpEvent(id, username, role), CorrelationContext.Empty);
@@ -62,7 +62,8 @@ namespace S3.Services.Identity.Services
                     "Invalid credentials.");
             }
             var refreshToken = new RefreshToken(user, _passwordHasher);
-            var claims = await _claimsProvider.GetAsync(user.Id);
+            var claims = await _claimsProvider.GetAsync(user);
+            //var claims = await _claimsProvider.GetAsync(user.Id);
             var jwt = _jwtHandler.CreateToken(user.Id.ToString("N"), user.Role, claims);
             jwt.RefreshToken = refreshToken.Token;
             await _refreshTokenRepository.AddAsync(refreshToken);

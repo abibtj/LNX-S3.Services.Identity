@@ -65,7 +65,8 @@ namespace S3.Services.Identity.Services
                 throw new S3Exception(ExceptionCodes.NotFound, 
                     $"User: '{refreshToken.UserId}' was not found.");
             }
-            var claims = await _claimsProvider.GetAsync(user.Id);
+            var claims = await _claimsProvider.GetAsync(user);
+            //var claims = await _claimsProvider.GetAsync(user.Id);
             var jwt = _jwtHandler.CreateToken(user.Id.ToString("N"), user.Role, claims);
             jwt.RefreshToken = refreshToken.Token;
             await _busPublisher.PublishAsync(new AccessTokenRefreshedEvent(user.Id), CorrelationContext.Empty);

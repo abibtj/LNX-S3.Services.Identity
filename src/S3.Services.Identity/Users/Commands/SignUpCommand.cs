@@ -7,6 +7,8 @@ namespace S3.Services.Identity.Users.Commands
     public class SignUpCommand
     {
         public Guid Id { get; }
+        [Required]
+        public Guid SchoolId { get; }
         [Required(ErrorMessage ="Username is required.")]
         public string Username { get; }
         [Required(ErrorMessage ="Password is required.")]
@@ -15,12 +17,8 @@ namespace S3.Services.Identity.Users.Commands
         public string Role { get; }
 
         [JsonConstructor]
-        public SignUpCommand(string username, string password, string role)
-        {
-            Id = Guid.NewGuid();
-            Username = username;
-            Password = password;
-            Role = role;
-        }
+        public SignUpCommand(Guid schoolId, string username, string password, string role)
+            => (Id, SchoolId, Username, Password, Role) 
+            = (Guid.NewGuid(), schoolId, username, password, role);
     }
 }

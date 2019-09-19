@@ -7,7 +7,7 @@ namespace S3.Services.Identity.Services
 {
     public interface IIdentityService
     {
-        Task SignUpAsync(Guid id, string username, string password, string role = Role.Teacher);
+        Task SignUpAsync(Guid id, Guid schoolId, string username, string password, string role);
         Task<JsonWebToken> SignInAsync(string username, string password);
         Task ChangePasswordAsync(Guid userId, string currentPassword, string newPassword);         
     }
