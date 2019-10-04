@@ -10,13 +10,17 @@
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
     <!--<Nullable>enable</Nullable>-->
-    <NoWarn>CS0168,CS4014,CS8601,CS8603,CS8604,CS8618,CS8632</NoWarn>
+     <NoWarn>CS0168,CS1998,CS4014,CS8601,CS8602,CS8603,CS8604,CS8618,CS8620,CS8625,CS8632</NoWarn>
     <!--warning CS0168: The variable 'e' is declared but never used.-->
+    <!--warning CS1998: This async method lacks 'await' operators and will run synchronously-->
     <!--warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.-->
     <!--warning CS8601: Possible null reference assignment.-->
+    <!--warning CS8602: Dereference of a possibly null reference.-->
     <!--warning CS8603: Possible null reference return.-->
     <!--warning CS8604: Possible null reference argument for parameter.-->
     <!--warning CS8618: Non-nullable field is uninitialized.-->
+    <!--warning CS8620: Argument of type 'AddressValidator' cannot be used for parameter 'validator' of type 'IValidator<ParentAddress?>' in 'IRuleBuilderOptions<CreateParentCommand, ParentAddress?> IRuleBuilder<CreateParentCommand, ParentAddress?>.SetValidator(IValidator<ParentAddress?> validator, params string[] ruleSets)' due to differences in the nullability of reference types.-->
+    <!--warning CS8625: Cannot convert null literal to non-nullable reference type.-->
     <!--warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.-->
   </PropertyGroup>
 
