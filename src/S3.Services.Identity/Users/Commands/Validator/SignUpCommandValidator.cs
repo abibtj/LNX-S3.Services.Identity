@@ -8,6 +8,9 @@ namespace S3.Services.Identity.Users.Commands.Validators
     {
         public SignUpCommandCommandValidator()
         {
+            RuleFor(x => x.UserId)
+                  .NotEmpty().WithMessage("Id is required.");
+
             RuleFor(x => x.SchoolId)
                   .NotEmpty().WithMessage("School's Id is required.");
         }

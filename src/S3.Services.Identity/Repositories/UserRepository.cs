@@ -27,5 +27,8 @@ namespace S3.Services.Identity.Repositories
 
         public async Task UpdateAsync(User user)
             => await _repository.UpdateAsync(user);
+
+        public async Task RemoveAsync(Guid id)
+            => await _repository.DeleteAsync(id);
     }
 }

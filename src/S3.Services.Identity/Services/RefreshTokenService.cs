@@ -67,7 +67,7 @@ namespace S3.Services.Identity.Services
             }
             var claims = await _claimsProvider.GetAsync(user);
             //var claims = await _claimsProvider.GetAsync(user.Id);
-            var jwt = _jwtHandler.CreateToken(user.Id.ToString("N"), user.Role, claims);
+            var jwt = _jwtHandler.CreateToken(user.Id.ToString("N"), user.Roles, claims);
             jwt.RefreshToken = refreshToken.Token;
             await _busPublisher.PublishAsync(new AccessTokenRefreshedEvent(user.Id), CorrelationContext.Empty);
             

@@ -11,6 +11,7 @@ namespace S3.Services.Identity.Services
         {
             return await Task.FromResult(new Dictionary<string, string>
             {
+                ["id"] = user.Id.ToString(),
                 ["username"] = user.Username,
                 ["schoolId"] = user.SchoolId.ToString()
             });

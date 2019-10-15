@@ -12,5 +12,6 @@ namespace S3.Services.Identity.Repositories
         Task<User> GetAsync(string username);
         Task AddAsync(User user);
         Task UpdateAsync(User user);
+        Task RemoveAsync(Guid id);
     }
 }

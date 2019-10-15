@@ -5,6 +5,7 @@ using S3.Services.Identity.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using S3.Services.Identity.Users.Commands;
+using Microsoft.Extensions.Configuration;
 
 namespace S3.Services.Identity.Controllers
 {
@@ -17,12 +18,12 @@ namespace S3.Services.Identity.Controllers
         private readonly IRefreshTokenService _refreshTokenService;
 
         public TokensController(IAccessTokenService accessTokenService,
-            IRefreshTokenService refreshTokenService)
-        {
-            _accessTokenService = accessTokenService;
-            _refreshTokenService = refreshTokenService;
-        }
-        
+           IRefreshTokenService refreshTokenService, IConfiguration configuration)
+           : base(configuration)
+
+           => (_accessTokenService, _refreshTokenService) = (accessTokenService, refreshTokenService);
+
+
         [HttpPost("access-tokens/{refreshToken}/refresh")]
         [AllowAnonymous]
         public async Task<IActionResult> RefreshAccessToken(string refreshToken, RefreshAccessTokenCommand command)

@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 
 namespace S3.Services.Identity.Users.Events
 {
-    public class SignedUpEvent : IEvent
+    public class UserRolesUpdatedEvent : IEvent
     {
         public Guid UserId { get; }
         public string[] Roles { get; }
 
         [JsonConstructor]
-        public SignedUpEvent(Guid userId, string[] roles)
+        public UserRolesUpdatedEvent(Guid userId, string[] roles)
             => (UserId, Roles) = (userId, roles);
     }
 }

@@ -18,7 +18,7 @@ namespace S3.Services.Identity.Domain
         public Guid SchoolId { get; private set; }
         //public string Email { get; private set; }
         public string Username { get; private set; }
-        public string Role { get; private set; }
+        public string[] Roles { get; private set; }
         public string PasswordHash { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
@@ -28,25 +28,36 @@ namespace S3.Services.Identity.Domain
 
         }
 
-        public User(Guid id, Guid schoolId, string username, string role)
+        public User(Guid id, Guid schoolId, string username, string[] roles)
         {
-            //if (!EmailRegex.IsMatch(username))
-            //{
-            //    throw new S3Exception(ExceptionCodes.InvalidEmail,
-            //        $"Invalid email: '{username}'.");
-            //}
-            if (!Domain.Role.IsValid(role))
-            {
-                throw new S3Exception(ExceptionCodes.InvalidRole,
-                    $"Invalid role: '{role}'.");
-            }
+            ValidateRoles(roles);
 
             Id = id;
             SchoolId = schoolId;
             Username = username;
-            Role = role.ToLowerInvariant();
+            Roles = roles; // No need joining roles, mongodb can store roles as an array
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
+        }
+
+        public void SetUpdatedDate() => UpdatedAt = DateTime.UtcNow;
+
+        public void SetRoles(string[] roles)
+        {
+            ValidateRoles(roles);
+            Roles = roles;
+        }
+
+        private void ValidateRoles(string[] roles)
+        {
+            foreach (var role in roles)
+            {
+                if (!Role.IsValid(role))
+                {
+                    throw new S3Exception(ExceptionCodes.InvalidRole,
+                        $"Invalid role: '{role}'.");
+                }
+            }
         }
 
         public void SetPassword(string password, IPasswordHasher<User> passwordHasher)
@@ -68,7 +79,7 @@ namespace S3.Services.Identity.Domain
 
             var hasNumber = new Regex(@"[0-9]+");
             var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMiniMaxChars = new Regex(@".{6,20}");
+            var hasMiniMaxChars = new Regex(@".{6,50}");
             var hasLowerChar = new Regex(@"[a-z]+");
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
 
@@ -85,7 +96,7 @@ namespace S3.Services.Identity.Domain
             else if (!hasMiniMaxChars.IsMatch(password))
             {
                 throw new S3Exception(ExceptionCodes.InvalidPassword,
-                    "Password must be between 6 and 20 characters long.");
+                    "Password must be between 6 and 50 characters long.");
             }
             else if (!hasNumber.IsMatch(password))
             {
