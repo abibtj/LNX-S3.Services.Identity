@@ -98,7 +98,7 @@ namespace S3.Services.Identity.Services
             user.SetPassword(newPassword, _passwordHasher);
             user.SetUpdatedDate();
             await _userRepository.UpdateAsync(user);
-            //await _busPublisher.PublishAsync(new PasswordChangedEvent(userId), CorrelationContext.Empty);         
+            await _busPublisher.PublishAsync(new PasswordResetEvent(userId, newPassword), CorrelationContext.Empty);
         }
 
         public async Task RemoveSignUpAsync(Guid userId)
@@ -111,7 +111,7 @@ namespace S3.Services.Identity.Services
             }
            
             await _userRepository.RemoveAsync(userId);
-            await _busPublisher.PublishAsync(new SignUpRemovedEvent(user.Id), CorrelationContext.Empty);
+            await _busPublisher.PublishAsync(new SignUpRemovedEvent(user.Id, user.Roles), CorrelationContext.Empty);
         }
 
         public async Task UpdateUserRolesAsync(Guid userId, string[] roles)

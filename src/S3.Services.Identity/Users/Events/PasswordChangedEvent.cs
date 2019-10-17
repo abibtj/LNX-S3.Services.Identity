@@ -9,9 +9,6 @@ namespace S3.Services.Identity.Users.Events
         public Guid UserId { get; }
 
         [JsonConstructor]
-        public PasswordChangedEvent(Guid userId)
-        {
-            UserId = userId;
-        }
+        public PasswordChangedEvent(Guid userId) => UserId = userId;
     }
 }

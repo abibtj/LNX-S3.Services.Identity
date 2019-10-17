@@ -23,6 +23,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using S3.Services.Identity.ExternalEvents;
 
 namespace S3.Services.Identity
 {
@@ -102,7 +103,10 @@ namespace S3.Services.Identity
             app.UseAccessTokenValidator();
             app.UseServiceId();
             app.UseMvc();
-            app.UseRabbitMq();
+            app.UseRabbitMq()
+                .SubscribeEvent<PersonDeletedEvent>(@namespace: "registration")
+
+            ;
 
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() =>
