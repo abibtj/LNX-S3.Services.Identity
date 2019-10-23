@@ -13,5 +13,6 @@ namespace S3.Services.Identity.Services
         Task ResetPasswordAsync(Guid userId, string newPassword);         
         Task RemoveSignUpAsync(Guid userId);         
         Task UpdateUserRolesAsync(Guid userId, string[] roles);         
+        Task<bool> CheckUsernameAvailabilityAsync(string username);         
     }
 }

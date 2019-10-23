@@ -128,5 +128,11 @@ namespace S3.Services.Identity.Services
             await _userRepository.UpdateAsync(user);
             await _busPublisher.PublishAsync(new UserRolesUpdatedEvent(user.Id, user.Roles), CorrelationContext.Empty);
         }
+
+        public async Task<bool> CheckUsernameAvailabilityAsync(string username)
+        {
+            var user = await _userRepository.GetAsync(username);
+            return (user is null) ? true : false;
+        }
     }
 }

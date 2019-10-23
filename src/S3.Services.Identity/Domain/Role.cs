@@ -3,36 +3,33 @@ namespace S3.Services.Identity.Domain
 {
     public static class Role
     {
-        public const string SuperAdmin = "super admin";
-        public const string Admin = "admin";
-        public const string SchoolAdmin = "school admin";
-        public const string AssistantSchoolAdmin = "assistant school admin";
-        public const string Teacher = "teacher";
-        public const string Parent = "parent";
-        public const string Student = "student";
-
-        //public static bool IsValid(string role)
-        //{
-        //    if (string.IsNullOrWhiteSpace(role))
-        //        return false;
-
-        //    role = role.ToLowerInvariant();
-
-        //    return role == SuperAdmin || role == Admin || role == SchoolAdmin
-        //        || role == AssistantSchoolAdmin || role == Teacher
-        //        || role == Parent || role == Student;
-        //}
+        public const string SuperAdmin = "Super Admin";
+        public const string Admin = "Admin";
+        public const string SchoolAdmin = "School Admin";
+        public const string AssistantSchoolAdmin = "Assistant School Admin";
+        public const string Teacher = "Teacher";
+        public const string Parent = "Parent";
+        public const string Student = "Student";
+        
+        // Lower case version for comparison purpose only
+        private const string super_admin = "super admin";
+        private const string admin = "admin";
+        private const string school_admin = "school admin";
+        private const string assistant_school_admin = "assistant school admin";
+        private const string teacher = "teacher";
+        private const string parent = "parent";
+        private const string student = "student";
 
         public static bool IsValid(string role) // Use pattern matching
             => role.ToLowerInvariant() switch
             {
-                SuperAdmin => true,
-                Admin => true,
-                SchoolAdmin => true,
-                AssistantSchoolAdmin => true,
-                Teacher => true,
-                Parent => true,
-                Student => true,
+                super_admin => true,
+                admin => true,
+                school_admin => true,
+                assistant_school_admin => true,
+                teacher => true,
+                parent => true,
+                student => true,
                 _ => false
             };
     }

@@ -27,6 +27,10 @@ namespace S3.Services.Identity.Controllers
             => (_identityService, _refreshTokenService) = (identityService, refreshTokenService);
 
 
+        [HttpGet("check-username")]
+        public async Task<bool> CheckUsernameAvailability(string username) 
+            => await _identityService.CheckUsernameAvailabilityAsync(username);
+      
         [HttpGet("me")]
         [JwtAuth]
         public IActionResult Get() => Content($"Your id: '{UserId:N}'.");
