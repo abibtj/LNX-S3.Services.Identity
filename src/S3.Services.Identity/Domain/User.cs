@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using S3.Common;
 using S3.Common.Types;
-
+using S3.Common.Utility;
 
 namespace S3.Services.Identity.Domain
 {

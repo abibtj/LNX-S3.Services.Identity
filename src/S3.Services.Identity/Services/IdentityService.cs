@@ -43,6 +43,12 @@ namespace S3.Services.Identity.Services
                 throw new S3Exception(ExceptionCodes.UsernameInUse,
                     $"Username: '{username}' is already in use.");
             }
+
+            if (await _userRepository.SchoolAdminExistsAsync(schoolId))
+            {
+                throw new S3Exception(ExceptionCodes.SchoolAdminExists,
+                   $"School Admin already exists for school with id: {schoolId}.");
+            }
            
             user = new User(id, schoolId, username, roles);
             user.SetPassword(password, _passwordHasher);

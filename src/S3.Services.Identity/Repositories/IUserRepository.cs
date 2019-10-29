@@ -13,5 +13,6 @@ namespace S3.Services.Identity.Repositories
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task RemoveAsync(Guid id);
+        Task<bool> SchoolAdminExistsAsync(Guid schoolId);
     }
 }

@@ -4,6 +4,8 @@ using S3.Common.Mongo;
 using S3.Services.Identity.Domain;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System.Linq;
+using S3.Common.Utility;
 
 namespace S3.Services.Identity.Repositories
 {
@@ -30,5 +32,9 @@ namespace S3.Services.Identity.Repositories
 
         public async Task RemoveAsync(Guid id)
             => await _repository.DeleteAsync(id);
+
+        public async Task<bool> SchoolAdminExistsAsync(Guid schoolId)
+           => await _repository.ExistsAsync(x => x.SchoolId == schoolId && (x.Roles.ToList().Contains(Role.SchoolAdmin)));
+
     }
 }
