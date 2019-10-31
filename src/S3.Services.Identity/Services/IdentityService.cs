@@ -8,6 +8,8 @@ using S3.Services.Identity.Domain;
 using S3.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
 using S3.Common;
+using System.Linq;
+using S3.Common.Utility;
 
 namespace S3.Services.Identity.Services
 {
@@ -44,10 +46,14 @@ namespace S3.Services.Identity.Services
                     $"Username: '{username}' is already in use.");
             }
 
-            if (await _userRepository.SchoolAdminExistsAsync(schoolId))
+            // Trying to create a user with role SchoolAdmin? check if a school admin is not already existing for this school
+            if (roles.ToList().Any(x => x.ToLowerInvariant() == Role.SchoolAdmin.ToLowerInvariant()))
             {
-                throw new S3Exception(ExceptionCodes.SchoolAdminExists,
-                   $"School Admin already exists for school with id: {schoolId}.");
+                if (await _userRepository.SchoolAdminExistsAsync(schoolId))
+                {
+                    throw new S3Exception(ExceptionCodes.SchoolAdminExists,
+                       $"School Admin already exists for school with id: {schoolId}.");
+                }
             }
            
             user = new User(id, schoolId, username, roles);
