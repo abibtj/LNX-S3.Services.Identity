@@ -42,7 +42,7 @@ namespace S3.Services.Identity.Services
             var user = await _userRepository.GetAsync(username);
             if (user != null)
             {
-                throw new S3Exception(ExceptionCodes.UsernameInUse,
+                throw new S3Exception(ExceptionCodes.NameInUse,
                     $"Username: '{username}' is already in use.");
             }
 
