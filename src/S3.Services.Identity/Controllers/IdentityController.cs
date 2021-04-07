@@ -36,7 +36,7 @@ namespace S3.Services.Identity.Controllers
         public IActionResult Get() => Content($"Your id: '{UserId:N}'.");
 
         [HttpPost("sign-up")]
-        [JwtAuth(Roles = "Super Admin, Admin, School Admin, Assistant School Admin")]
+        //[JwtAuth(Roles = "Super Admin, Admin, School Admin, Assistant School Admin")]
         public async Task<IActionResult> SignUp(SignUpCommand command)
         {
             // Superadmin can sign up users with any role

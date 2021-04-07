@@ -45,6 +45,10 @@ namespace S3.Services.Identity.Controllers
             {
                _configuration.GetSection("roles:assistantSchooladmin").Bind(_roles);
             }
+            else
+            {
+               _configuration.GetSection("roles:default").Bind(_roles);
+            }
 
             if (roles.Except(_roles.AssignableRoles).Any())
                 throw new S3Exception("Unathorised_Role", 

@@ -19,3 +19,26 @@ C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity
 C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
 C:\Users\Abeeb\Documents\Visual Studio 2019\Projects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\global.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\appsettings.docker.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\global.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Services.Identity.deps.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Services.Identity.runtimeconfig.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Services.Identity.runtimeconfig.dev.json
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Services.Identity.dll
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Services.Identity.pdb
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Common.dll
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\bin\Debug\netcoreapp2.2\S3.Common.pdb
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.csprojAssemblyReference.cache
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.AssemblyInfoInputs.cache
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.AssemblyInfo.cs
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.csproj.CoreCompileInputs.cache
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.RazorAssemblyInfo.cache
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.RazorAssemblyInfo.cs
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.RazorTargetAssemblyInfo.cache
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.csproj.CopyComplete
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.dll
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.pdb
+C:\Users\ACER\source\repos\MyProjects\S3\LNX-S3.Services.Identity\src\S3.Services.Identity\obj\Debug\netcoreapp2.2\S3.Services.Identity.genruntimeconfig.cache
